@@ -16,14 +16,38 @@ let currentQuestionIndex
 axios  
 .get(API_URL)
 .then((res) => {
+  startQuiz(res)
+})
+.catch((err) => console.error(err));
 
-  allData = res.data
+
+
+function startQuiz (apiResponse) {
+  allData = apiResponse.data
   console.log(allData)
-
+  
   for (let i = 0; i < allData.length ; i++){
     questions.push(allData[i].question) 
     
   }
     console.log(questions)
-})
-.catch((err) => console.error(err));
+
+  startButton.addEventListener('click', startGame)
+
+}
+
+
+
+function startGame (e) {
+  startButton.classList.add("hide");
+  currentQuestionIndex = 0;
+  questionContainerElement.classList.remove("hide");
+  showFirstQuestion()
+}
+
+
+
+function showFirstQuestion () {
+    questionElement.innerText = questions[0]
+    
+}
