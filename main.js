@@ -11,6 +11,9 @@ const API_URL= 'https://quizapi.io/api/v1/questions?apiKey=fIO0fejGD9Rs7yJv9xWVy
 
 let allData = []
 let questions = []
+let answers = []
+let correctAnswer = []
+
 let currentQuestionIndex
 
 axios  
@@ -28,9 +31,19 @@ function startQuiz (apiResponse) {
   
   for (let i = 0; i < allData.length ; i++){
     questions.push(allData[i].question) 
-    
+    answers.push(allData[i].answers)
+    if (allData[i].correct_answer !== null){
+      correctAnswer.push(allData[i].correct_answer)
+    } else {
+      if (allData[i].correct_answers.answer_a_correct === 'true'){
+        correctAnswer.push(allData[i].answers.answer_a) /* buscar cómo iterar objetos para no tener que escribir seis if con el a b c d e f */
+      }
+
+    }
   }
     console.log(questions)
+    console.log(answers)
+    console.log(correctAnswer)
 
   startButton.addEventListener('click', startGame)
 
@@ -42,12 +55,32 @@ function startGame (e) {
   startButton.classList.add("hide");
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
-  showFirstQuestion()
+  showQuestion()
 }
 
 
 
-function showFirstQuestion () {
-    questionElement.innerText = questions[0]
+function showQuestion () {
+    questionElement.innerText = questions[currentQuestionIndex]
+
+    let arrayAnswers = [
+      answers[currentQuestionIndex].answer_a,
+      answers[currentQuestionIndex].answer_b,
+      answers[currentQuestionIndex].answer_c,
+      answers[currentQuestionIndex].answer_d,
+      answers[currentQuestionIndex].answer_e,
+      answers[currentQuestionIndex].answer_f
+      ]
     
+    for (let eachArrayPosition of arrayAnswers) {
+      if (eachArrayPosition !== null) {
+        answerButtonsElement.innerHTML += 
+        `<input onclick="validate" type="button" value="${eachArrayPosition}">`
+      }
+    }
+}
+
+
+function validate () {
+
 }
