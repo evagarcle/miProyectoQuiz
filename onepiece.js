@@ -6,6 +6,7 @@ const nextButton = document.getElementById("next-btn")
 const questionContainerElement = document.getElementById("question-container")
 const questionElement = document.getElementById("question")
 const answerButtonsElement = document.getElementById("answer-buttons")
+const startAgainButton = document.getElementById("reStart-btn")
 
 
 
@@ -49,16 +50,25 @@ function startGame (e) {
 }
 
 function showQuestion () {
-  answerButtonsElement.innerHTML = '' 
 
-  answerButtonsElement.classList.remove('disabled')
-
-  questionElement.innerText = questions[currentQuestionIndex]
-
-  for (let eachOption of options[currentQuestionIndex]) {
-      answerButtonsElement.innerHTML += 
-      `<input class='resBtn' onclick="checkAnswer(this)" type="button" value="${eachOption}">`
+  if (currentQuestionIndex >= questions.length) {
+    questionContainerElement.innerHTML = contCorrectAnswer + '/10'
+    startAgainButton.classList.remove('hide')
+    nextButton.classList.add('hide')
+  } else {
     
+    answerButtonsElement.innerHTML = '' 
+  
+    answerButtonsElement.classList.remove('disabled')
+  
+    questionElement.innerText = questions[currentQuestionIndex]
+  
+    for (let eachOption of options[currentQuestionIndex]) {
+        answerButtonsElement.innerHTML += 
+        `<input class='resBtn' onclick="checkAnswer(this)" type="button" value="${eachOption}">`
+      
+    }
+
   }
 }
 
@@ -76,9 +86,14 @@ function checkAnswer (element) {
   
   currentQuestionIndex++
 
-  
+}
+
+function tryAgain (e) {
+  e.preventDefault()
+
 }
 
 
 
 nextButton.addEventListener('click', showQuestion)
+startAgainButton.addEventListener('click', tryAgain)
