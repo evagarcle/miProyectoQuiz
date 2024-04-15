@@ -9,3 +9,8 @@
 .wrong {
   background-color: rgb(255, 0, 0);
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

@@ -72,15 +72,15 @@ function showQuestion () {
       answers[currentQuestionIndex].answer_f
       ]
     
-    for (let eachArrayPosition of arrayAnswers) {
-      if (eachArrayPosition !== null) {
+    for (let eachAnswer of arrayAnswers) {
+      if (eachAnswer !== null) {
         answerButtonsElement.innerHTML += 
-        `<input onclick="validate" type="button" value="${eachArrayPosition}">`
+        `<input onclick="validate(this)" type="button" value="${eachAnswer}">`
       }
     }
 }
 
 
-function validate () {
+function validate (elementThis) { /* explicarme cómo funciona el this */
 
 }
