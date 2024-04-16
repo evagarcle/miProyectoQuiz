@@ -7,8 +7,6 @@ const questionsContainer = document.getElementById("question-container")
 const questionElement = document.getElementById("question")
 const answerButtonsElement = document.getElementById("answer-buttons")
 
-
-
 /**creamos las variables globales para extraer los datos de la api y tener toda la información recogida en su correspondiente variable y posteriormente poder manejar los datos más eficientemente*/
 let allData = []
 let questions = []
@@ -20,29 +18,24 @@ let contCorrectAnswer = 0
 let currentQuestionIndex
 
 
-
-const getOnePieceQuestions = async()=>{
+const getOnePieceData = async()=>{
   try {
     const res = await axios.get(ONEPIECE_URL)
-    startQuiz(res)
+    allData = res.data
+    for (let i = 0; i < allData.length; i++){
+      questions.push(allData[i].question)
+      options.push(allData[i].options)
+      answer.push(allData[i].answer)     
+    }
       } catch (error) {
     console.error(error);
   }
 }
-getOnePieceQuestions()
+getOnePieceData()
 
 
-function startQuiz (res) {
-  allData = res.data
-  for (let i = 0; i < allData.length; i++){
-    questions.push(allData[i].question)
-    options.push(allData[i].options)
-    answer.push(allData[i].answer)     
-  }
-}
 
-
-function startGame (e) {
+function startGame () {
   startButton.classList.add("hide") /**al hacer click, ocultamos el botón de start */
   currentQuestionIndex = 0 /*significa que estamos en la posición cero del array de preguntas*/ 
   questionsContainer.classList.remove("hide") /**hacemos que aparezca el contenedor de las preguntas (está vacío hasta que llamamos a la función showQuestion, que lo pinta con el questionsContainer.innerHTML) */
