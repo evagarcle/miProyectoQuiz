@@ -6,6 +6,7 @@ const nextButton = document.getElementById("next-btn")
 const questionsContainer = document.getElementById("question-container")
 const currentQuestion = document.getElementById("question")
 const answersContainer = document.getElementById("answers-container")
+const wellcomeParagrah = document.getElementById("wellcomeParagraph")
 
 /**creamos las variables globales para extraer los datos de la api y tener toda la información recogida en su correspondiente variable y posteriormente poder manejar los datos más eficientemente*/
 let allData = []
@@ -36,6 +37,7 @@ getOnePieceData() /**llamamos a la función para que se ejecute al cargar la pá
 
 
 const startGame = () => {
+  
   startButton.classList.add("hide") /**al hacer click, ocultamos el botón de start */
   currentQuestionIndex = 0 /*asignamos el valor cero a nuestra variable global currentQuestionIndex para decirle que empezaremos en la posición cero del array de preguntas*/ 
   questionsContainer.classList.remove("hide") /**hacemos que aparezca el contenedor de las preguntas (está vacío hasta que llamamos a la función showQuestion, que lo pinta con el questionsContainer.innerHTML) */
@@ -50,8 +52,9 @@ const showQuestion = () => {
     nextButton.classList.add('hide') /**por tanto, ya que si entramos en este if significará que nos encontramos en la última pregunta y que no hay más preguntas, debemos borrar el boton de "next"  */
   } else { /**aquí entrará de la pregunta uno a la nueve */
     answersContainer.innerHTML = '' /**limpiamos el contenedor de las respuestas */
+    wellcomeParagrah.classList.add('hide')
     answersContainer.classList.remove('disabled') /**le quitamos al contenedor el disabled que le añadimos más abajo cuando seleccionamos una respuesta (para que no te deje cambiar de respuesta una vez ya hayas seleccionado una) */
-    currentQuestion.innerText = questions[currentQuestionIndex] /**pintamos la pregunta diciéndole que se vaya al array de questions (nuestra varibale global) y coja la pregutna correspondiente al valor actual del currentQuestionIndex */
+    currentQuestion.innerText = `PREGUNTA ${currentQuestionIndex + 1}` + questions[currentQuestionIndex] /**pintamos la pregunta diciéndole que se vaya al array de questions (nuestra varibale global) y coja la pregutna correspondiente al valor actual del currentQuestionIndex */
     
     /** del mismo modo, pintamos las respuestas: */
     for (let eachOption of options[currentQuestionIndex]) { /**para cada respuesta del array de respuestas de la pregunta actual (sabemos la pregunta actual gracias al currentQuestionIndex), */

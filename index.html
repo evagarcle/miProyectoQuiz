@@ -6,21 +6,25 @@
     <title>Quiz</title>
     
     <link rel="stylesheet" href="style.css">
-    
+        
   </head>
   <body>
 
-    <div id="question-container" class="hide">
-      <div id="question">Question</div>
+  <div class="global_container">
+    <div class="sub_global_container">
+      <div id="question-container" class="hide">
+        <div id="question" class="question-div">Question</div>
 
-      <div id="answers-container"></div>
-    </div>
+        <div id="answers-container"></div>
+      </div>
 
-    <div class="controls">
-      <button id="start-btn">Start</button>
-      <button id="next-btn" class="hide">Next</button>
-      
+      <div class="controls">
+        <p id="wellcomeParagraph">¡Bienvenid@ al Quiz de One Piece!</p>
+        <button id="start-btn"><p>EMPEZAR</p></button>
+        <button id="next-btn" class="hide">Next</button>
+      </div>
     </div>
+  </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
