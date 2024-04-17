@@ -1,12 +1,13 @@
 
 const ONEPIECE_URL = 'https://mocki.io/v1/12269c12-c8a3-4344-b4ef-53e780271be5'
 
-const startButton = document.getElementById("start-btn")
-const nextButton = document.getElementById("next-btn")
-const questionsContainer = document.getElementById("question-container")
-const currentQuestion = document.getElementById("question")
-const answersContainer = document.getElementById("answers-container")
-const wellcomeParagrah = document.getElementById("wellcomeParagraph")
+const startButton = document.getElementById('start-btn')
+const nextButton = document.getElementById('next-btn')
+const questionsContainer = document.getElementById('question-container')
+const currentQuestion = document.getElementById('question')
+const answersContainer = document.getElementById('answers-container')
+const wellcomeParagrah = document.getElementById('wellcomeParagraph')
+const tryAgainBtn = document.getElementById('start-again-btn')
 
 
 let allData = []
@@ -29,13 +30,21 @@ const getOnePieceData = async () => {
       answer.push(allData[i].answer)     
     }
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 }
 
 getOnePieceData() 
 
+const resetGame = () => {
+  wellcomeParagrah.classList.remove('hide')
+  tryAgainBtn.classList.add('hide')
+  document.getElementById('id_result').innerHTML = ''
+  startButton.classList.remove('hide')
+  currentQuestionIndex = 0
+  contCorrectAnswer = 0
 
+}
 
 const startGame = () => {
   
@@ -48,10 +57,24 @@ const startGame = () => {
 const showQuestion = () => {
   nextButton.classList.add('hide') 
  
-  if (currentQuestionIndex >= questions.length) { 
-    questionsContainer.innerHTML = `<p>Tu resultado es: </p> <p class="question-tittle">${contCorrectAnswer}/${currentQuestionIndex}</p>` 
+  if (currentQuestionIndex >= questions.length*) { 
+
+    let result = document.getElementById('id_result');
+    if (!result) {
+      result = document.createElement('div')
+      result.id = 'id_result'
+    } 
+    result.innerHTML = `<p>Tu resultado es: </p> <p class="question-tittle">${contCorrectAnswer}/${currentQuestionIndex}</p>`
+    questionsContainer.appendChild(result)
+
+    answersContainer.innerHTML = ''
+    currentQuestion.innerHTML = ''
+    
     nextButton.classList.add('hide') 
+    tryAgainBtn.classList.remove('hide')
+
   } else { 
+    console.log('hola');
     answersContainer.innerHTML = '' 
     wellcomeParagrah.classList.add('hide')
     answersContainer.classList.remove('disabled') 
@@ -84,4 +107,5 @@ const checkAnswer = (element) => {
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', showQuestion) 
+tryAgainBtn.addEventListener('click', resetGame)
 
