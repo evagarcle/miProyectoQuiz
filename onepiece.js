@@ -57,7 +57,7 @@ const startGame = () => {
 const showQuestion = () => {
   nextButton.classList.add('hide') 
  
-  if (currentQuestionIndex >= questions.length*) { 
+  if (currentQuestionIndex >= questions.length) { 
 
     let result = document.getElementById('id_result');
     if (!result) {
