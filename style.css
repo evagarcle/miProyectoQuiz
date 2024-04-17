@@ -51,7 +51,9 @@ body{
 
 /* Estilo para el párrafo de bienvenida */
 #wellcomeParagraph {
-  font-size: 24px;
+  font-size: 35px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
   }
 
 /* Estilo para el botón de empezar */
@@ -64,6 +66,11 @@ body{
   border-radius: 5px;
   cursor: pointer;
   border: none;
+  margin-top: 0;
+}
+
+.text-start-btn {
+  margin-top: 0;
 }
 
 /* Estilo para el botón de siguiente */
@@ -71,7 +78,7 @@ body{
   background-image: linear-gradient(to right, #3498db, #e74c3c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  border: 0.5px solid rgba(120, 93, 93, 0.733);
+  border: 2px solid rgba(120, 93, 93, 0.733);
   background-clip: text;
   padding: 10px 20px;
   font-size: 25px;
