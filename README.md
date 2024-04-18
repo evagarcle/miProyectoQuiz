@@ -33,3 +33,8 @@ Si deseas ejecutar este código en tu propio entorno:
 - [Axios](https://axios-http.com/): Documentación oficial para la biblioteca Axios utilizada para realizar solicitudes HTTP.
 
 ¡Disfruta jugando y probando tus conocimientos sobre One Piece!
+
+
+![Captura de pantalla 2024-04-18 212923](https://github.com/evagarcle/miProyectoQuiz/assets/162992210/0a73ab08-bb4d-49d8-8605-aa4559e601f9)
+![Captura de pantalla 2024-04-18 212828](https://github.com/evagarcle/miProyectoQuiz/assets/162992210/19dcd90e-9d2b-49c6-93e3-ba072a508956)
+![Captura de pantalla 2024-04-18 212725](https://github.com/evagarcle/miProyectoQuiz/assets/162992210/036736e6-02c7-44c2-aa1b-9adf7de2bd4c)
