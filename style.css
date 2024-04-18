@@ -130,3 +130,16 @@ body{
 .input:hover {
   font-weight: bold;
 }
+
+/* Estilo para el botón de reiniciar */
+#start-again-btn {
+  background-image: linear-gradient(to right, #3498db, #e74c3c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 2px solid rgba(120, 93, 93, 0.733);
+  background-clip: text;
+  padding: 10px 20px;
+  font-size: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
