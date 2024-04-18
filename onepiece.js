@@ -64,7 +64,7 @@ const showQuestion = () => {
       result = document.createElement('div')
       result.id = 'id_result'
     } 
-    result.innerHTML = `<p>Tu resultado es: </p> <p class="question-tittle">${contCorrectAnswer}/${currentQuestionIndex}</p>`
+    result.innerHTML = `<p id="wellcomeParagraph">Tu resultado es: </p> <p class="question-tittle">${contCorrectAnswer}/${currentQuestionIndex}</p>`
     questionsContainer.appendChild(result)
 
     answersContainer.innerHTML = ''
